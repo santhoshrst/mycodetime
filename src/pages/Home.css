@@ -1,0 +1,148 @@
+/* Base Styles */
+.home-container {
+  background: radial-gradient(circle at top, #2b1055, #09011a);
+  color: #fff;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 60px;
+  position: relative;
+  z-index: 1001;
+}
+
+.logo { font-size: 22px; font-weight: bold; }
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.navbar nav a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navbar nav a:hover { color: #fff; }
+
+.login-btn {
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #7f5af0, #2cb67d);
+  border: none;
+  border-radius: 20px;
+  color: #000;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 60px;
+}
+
+.hero-left { flex: 1; max-width: 600px; }
+.hero-right { flex: 1; display: flex; justify-content: center; position: relative; }
+
+.hero h1 { font-size: 46px; line-height: 1.2; }
+.hero h1 span { color: #7f5af0; }
+.hero p { margin-top: 20px; color: #bdbdbd; }
+
+.primary-btn {
+  padding: 14px 30px; border-radius: 30px; border: none;
+  background: linear-gradient(135deg, #7f5af0, #2cb67d);
+  font-weight: bold; cursor: pointer;
+}
+
+.secondary-btn {
+  padding: 14px 30px; border-radius: 30px; background: transparent;
+  border: 1px solid #7f5af0; color: #fff; margin-left: 15px; cursor: pointer;
+}
+
+/* Tech Stack Animation */
+.tech-stack-container {
+  position: relative; width: 400px; height: 400px;
+  display: flex; justify-content: center; align-items: center;
+}
+
+.central-glow {
+  position: absolute; width: 120px; height: 120px;
+  background: radial-gradient(circle at 30% 30%, #ffb703, #6a040f);
+  border-radius: 50%; box-shadow: 0 0 50px #7b2ff7;
+  animation: pulse 3s infinite ease-in-out;
+}
+
+.orbit {
+  position: relative; width: 100%; height: 100%;
+  animation: rotate 20s linear infinite;
+}
+
+.icon-card {
+  position: absolute; width: 60px; height: 60px;
+  background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px); border-radius: 12px;
+  display: flex; justify-content: center; align-items: center;
+  top: 50%; left: 50%; margin-top: -30px; margin-left: -30px;
+}
+
+.icon-card span { animation: rotate-inverse 20s linear infinite; }
+
+/* Positioning (Rotations) */
+.java   { transform: rotate(0deg) translateX(140px) rotate(0deg); color: #f89820; }
+.cpp    { transform: rotate(60deg) translateX(140px) rotate(-60deg); color: #00599C; }
+.csharp { transform: rotate(120deg) translateX(140px) rotate(-120deg); color: #9B4993; }
+.python { transform: rotate(180deg) translateX(140px) rotate(-180deg); color: #3776AB; }
+.web    { transform: rotate(240deg) translateX(140px) rotate(-240deg); color: #F7DF1E; }
+.logic  { transform: rotate(300deg) translateX(140px) rotate(-300deg); color: #61DAFB; }
+
+/* Features */
+.features {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px; padding: 60px;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.08); padding: 25px;
+  border-radius: 18px; backdrop-filter: blur(10px); transition: 0.3s;
+}
+
+.feature-card:hover { transform: translateY(-8px); }
+
+/* Keyframes */
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes rotate-inverse { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+@keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.1); opacity: 1; } }
+
+/* Mobile Menu Specifics */
+.menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.menu-toggle span { width: 25px; height: 3px; background: #fff; border-radius: 3px; transition: 0.3s; }
+
+.backdrop {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5); z-index: 999;
+}
+
+/* Mobile Media Query Example */
+@media (max-width: 768px) {
+  .menu-toggle { display: flex; }
+  .navbar nav {
+    position: fixed; top: 0; right: -100%; width: 70%; height: 100vh;
+    background: rgba(43, 16, 85, 0.98); flex-direction: column;
+    padding: 80px 30px; transition: 0.3s; z-index: 1000;
+  }
+  .navbar nav.active { right: 0; }
+  .hero { flex-direction: column; text-align: center; padding: 30px 20px; }
+  .tech-stack-container { width: 280px; height: 280px; }
+  /* Adjust individual icon translateX for mobile as in your original CSS */
+}

@@ -1,0 +1,390 @@
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #2b1055, #09011a);
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 60px;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      z-index: 1001;
+    }
+
+    .logo a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .navbar nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .navbar nav a {
+      margin-right: 0;
+      color: #ccc;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .navbar nav a:hover {
+      color: #fff;
+    }
+
+    .login-btn {
+      padding: 8px 20px;
+      background: linear-gradient(135deg, #7f5af0, #2cb67d);
+      border: none;
+      border-radius: 20px;
+      color: #000;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(127, 90, 240, 0.4);
+    }
+
+    /* Contest Creation Container */
+    .contest-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .page-header h1 {
+      font-size: 48px;
+      background: linear-gradient(135deg, #7f5af0, #2cb67d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 15px;
+    }
+
+    .page-header p {
+      color: #bdbdbd;
+      font-size: 18px;
+    }
+
+    my-box::-webkit-scrollbar { width: 10px; }
+    .my-box::-webkit-scrollbar-track { background: #f1f1f1; }
+    .my-box::-webkit-scrollbar-thumb { background: #888; }
+
+    /* Form Card */
+    .form-card1 {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      display: flex;
+  flex-direction: column;
+  max-height: 60vh;
+   overflow-y: auto;
+  flex: 1;
+    }
+
+    .form-group {
+      margin-bottom: 30px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      font-size: 16px;
+      color: #fff;
+    }
+
+    .form-group label i {
+      margin-right: 8px;
+      color: #7f5af0;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 16px;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #7f5af0;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 0 3px rgba(127, 90, 240, 0.2);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #bdbdbd;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* Date Time Row */
+    .datetime-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    /* Language Selection */
+    .language-selection {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .language-option {
+      position: relative;
+    }
+
+    .language-option input[type="checkbox"] {
+      display: none;
+    }
+
+    .language-option label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 600;
+    }
+
+    .language-option input[type="checkbox"]:checked + label {
+      background: linear-gradient(135deg, #7f5af0, #2cb67d);
+      border-color: transparent;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    .language-option label:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: #7f5af0;
+    }
+
+    /* Difficulty Selection */
+    .difficulty-options {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .difficulty-option {
+      flex: 1;
+    }
+
+    .difficulty-option input[type="radio"] {
+      display: none;
+    }
+
+    .difficulty-option label {
+      display: block;
+      padding: 15px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 600;
+    }
+
+    .difficulty-option input[type="radio"]:checked + label {
+      background: linear-gradient(135deg, #7f5af0, #2cb67d);
+      border-color: transparent;
+      color: #fff;
+    }
+
+    .difficulty-option label:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .difficulty-easy label {
+      border-left: 4px solid #2cb67d;
+    }
+
+    .difficulty-medium label {
+      border-left: 4px solid #ffb703;
+    }
+
+    .difficulty-hard label {
+      border-left: 4px solid #ef4444;
+    }
+
+    /* Problem Section */
+    .problem-section {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .problem-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .problem-header h3 {
+      color: #7f5af0;
+      font-size: 18px;
+    }
+
+    .remove-problem {
+      background: rgba(239, 68, 68, 0.2);
+      border: 2px solid #ef4444;
+      color: #ef4444;
+      padding: 8px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 600;
+    }
+
+    .remove-problem:hover {
+      background: #ef4444;
+      color: #fff;
+    }
+
+    .add-problem-btn {
+      width: 100%;
+      padding: 15px;
+      background: rgba(127, 90, 240, 0.2);
+      border: 2px dashed #7f5af0;
+      border-radius: 12px;
+      color: #7f5af0;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s;
+      margin-bottom: 30px;
+    }
+
+    .add-problem-btn:hover {
+      background: rgba(127, 90, 240, 0.3);
+      border-color: #2cb67d;
+      color: #2cb67d;
+    }
+
+    /* Submit Buttons */
+    .form-actions {
+      display: flex;
+      gap: 15px;
+      margin-top: 40px;
+    }
+
+    .btn-primary {
+      flex: 1;
+      padding: 18px;
+      background: linear-gradient(135deg, #7f5af0, #2cb67d);
+      border: none;
+      border-radius: 12px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(127, 90, 240, 0.4);
+    }
+
+    .btn-secondary {
+      flex: 1;
+      padding: 18px;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #fff;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 20px;
+      }
+
+      .contest-container {
+        padding: 20px 15px;
+      }
+
+      .form-card {
+        padding: 25px 20px;
+      }
+
+      .page-header h1 {
+        font-size: 32px;
+      }
+
+      .datetime-row {
+        grid-template-columns: 1fr;
+      }
+
+      .language-selection {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .difficulty-options {
+        flex-direction: column;
+      }
+
+      .form-actions {
+        flex-direction: column;
+      }
+    }
