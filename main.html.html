@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyCodeTime – Coding Contest Platform</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+	* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #2b1055, #09011a);
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 60px;
+  position: relative;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  z-index: 1001;
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.navbar nav a {
+  margin-right: 0;
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navbar nav a:hover {
+  color: #fff;
+}
+
+.login-btn {
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #7f5af0, #2cb67d);
+  border: none;
+  border-radius: 20px;
+  color: #000;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(127, 90, 240, 0.4);
+}
+
+/* Hamburger Menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1001;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 60px;
+  width: 100%;
+}
+
+.hero-left {
+  max-width: 600px;
+  width: 50%;
+  flex: 1;
+}
+
+.hero-right {
+  width: 50%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tech-stack-container {
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 46px;
+  line-height: 1.2;
+}
+
+.hero h1 span {
+  color: #7f5af0;
+}
+
+.hero p {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #bdbdbd;
+}
+
+.hero-actions {
+  margin-top: 35px;
+}
+
+.primary-btn {
+  padding: 14px 30px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #7f5af0, #2cb67d);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.secondary-btn {
+  padding: 14px 30px;
+  border-radius: 30px;
+  background: transparent;
+  border: 1px solid #7f5af0;
+  color: #fff;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+/* Planet */
+.hero-right {
+  position: relative;
+}
+
+.planet {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle at 30% 30%, #ffb703, #6a040f);
+  border-radius: 50%;
+  box-shadow: 0 0 80px rgba(255, 183, 3, 0.4);
+}
+
+/* Features */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+  padding: 60px;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 25px;
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+}
+
+.feature-card h3 {
+  margin-bottom: 10px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 30px;
+  color: #aaa;
+  font-size: 14px;
+}
+
+
+  </style>
+
+  <style>
+    /* Container positioning - matches the right side of your hero */
+.tech-stack-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The central glowing pulse */
+.central-glow {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at 30% 30%, #ffb703, #6a040f);
+  border-radius: 50%;
+  box-shadow: 0 0 50px #7b2ff7;
+  animation: pulse 3s infinite ease-in-out;
+}
+
+/* Orbit animation */
+.orbit {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  animation: rotate 20s linear infinite;
+  transform-origin: center center;
+  top: 0;
+  left: 0;
+}
+
+/* Styling for the language icons */
+.icon-card {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-family: sans-serif;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: box-shadow 0.3s, background 0.3s, border-color 0.3s;
+  transform-origin: center center;
+}
+
+/* Counter-rotate the span inside to keep icons upright */
+.icon-card span {
+  display: inline-block;
+  animation: rotate-inverse 20s linear infinite;
+  transform-origin: center center;
+}
+
+.icon-card:hover {
+  box-shadow: 0 6px 20px rgba(255, 183, 3, 0.6);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 183, 3, 0.3);
+}
+
+/* Icon Positioning in the circle - using circular orbit pattern */
+/* All icons start from center and are positioned in a circle */
+.java   { 
+  top: 50%; 
+  left: 50%; 
+  margin-top: -30px;
+  margin-left: -30px;
+  transform: rotate(0deg) translateX(140px) rotate(0deg); 
+  color: #f89820; 
+}
+.cpp    { 
+  top: 50%; 
+  left: 50%; 
+  margin-top: -30px;
+  margin-left: -30px;
+  transform: rotate(60deg) translateX(140px) rotate(-60deg); 
+  color: #00599C; 
+}
+.csharp { 
+  top: 50%; 
+  left: 50%; 
+  margin-top: -30px;
+  margin-left: -30px;
+  transform: rotate(120deg) translateX(140px) rotate(-120deg); 
+  color: #9B4993; 
+}
+.python { 
+  top: 50%; 
+  left: 50%; 
+  margin-top: -30px;
+  margin-left: -30px;
+  transform: rotate(180deg) translateX(140px) rotate(-180deg); 
+  color: #3776AB; 
+}
+.web    { 
+  top: 50%; 
+  left: 50%; 
+  margin-top: -30px;
+  margin-left: -30px;
+  transform: rotate(240deg) translateX(140px) rotate(-240deg); 
+  color: #F7DF1E; 
+}
+.logic  { 
+  top: 50%; 
+  left: 50%; 
+  margin-top: -30px;
+  margin-left: -30px;
+  transform: rotate(300deg) translateX(140px) rotate(-300deg); 
+  color: #61DAFB; 
+}
+
+/* Animations */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotate-inverse {
+  from { 
+    transform: rotate(0deg);
+  }
+  to { 
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+/* Hover effect to stop animation and highlight */
+.tech-stack-container:hover .orbit, 
+.tech-stack-container:hover .icon-card {
+  animation-play-state: paused;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Tablet Styles (768px - 1024px) */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 20px 40px;
+  }
+
+  .hero {
+    padding: 60px 40px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .tech-stack-container {
+    width: 350px;
+    height: 350px;
+  }
+
+  .central-glow {
+    width: 100px;
+    height: 100px;
+  }
+
+  .icon-card {
+    width: 55px;
+    height: 55px;
+    font-size: 0.9rem;
+  }
+
+  .java {
+    transform: rotate(0deg) translateX(120px) rotate(0deg);
+    margin-top: -27.5px;
+    margin-left: -27.5px;
+  }
+  .cpp {
+    transform: rotate(60deg) translateX(120px) rotate(-60deg);
+    margin-top: -27.5px;
+    margin-left: -27.5px;
+  }
+  .csharp {
+    transform: rotate(120deg) translateX(120px) rotate(-120deg);
+    margin-top: -27.5px;
+    margin-left: -27.5px;
+  }
+  .python {
+    transform: rotate(180deg) translateX(120px) rotate(-180deg);
+    margin-top: -27.5px;
+    margin-left: -27.5px;
+  }
+  .web {
+    transform: rotate(240deg) translateX(120px) rotate(-240deg);
+    margin-top: -27.5px;
+    margin-left: -27.5px;
+  }
+  .logic {
+    transform: rotate(300deg) translateX(120px) rotate(-300deg);
+    margin-top: -27.5px;
+    margin-left: -27.5px;
+  }
+
+  .features {
+    padding: 50px 40px;
+  }
+}
+
+/* Mobile Styles (max-width: 768px) */
+@media (max-width: 768px) {
+  /* Navbar */
+  .navbar {
+    padding: 15px 20px;
+    flex-wrap: nowrap;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  /* Hamburger Menu */
+  .menu-toggle {
+    display: flex;
+  }
+
+  .navbar nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background: rgba(43, 16, 85, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 80px 30px 30px;
+    gap: 20px;
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .navbar nav.active {
+    right: 0;
+  }
+
+  .navbar nav a {
+    font-size: 16px;
+    padding: 10px 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: color 0.3s;
+  }
+
+  .navbar nav a:hover {
+    color: #7f5af0;
+  }
+
+  .navbar nav .login-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+
+  /* Backdrop overlay */
+  .navbar::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 999;
+  }
+
+  .navbar.menu-open::after {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Hamburger Animation */
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  /* Hero Section */
+  .hero {
+    flex-direction: column;
+    padding: 30px 20px;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .hero-left {
+    width: 100% !important;
+    max-width: 100%;
+    margin-bottom: 0;
+    order: 1;
+  }
+
+  .hero-right {
+    width: 100% !important;
+    order: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+    line-height: 1.3;
+    margin-bottom: 15px;
+  }
+
+  .hero p {
+    font-size: 14px;
+    margin-top: 15px;
+    line-height: 1.6;
+    padding: 0 10px;
+  }
+
+  .hero-actions {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+    max-width: 300px;
+    margin-left: 0;
+    padding: 14px 24px;
+    font-size: 15px;
+    border-radius: 25px;
+  }
+
+  /* Tech Stack Container */
+  .tech-stack-container {
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  .central-glow {
+    width: 75px;
+    height: 75px;
+    box-shadow: 0 0 35px #7b2ff7;
+  }
+
+  .icon-card {
+    width: 48px;
+    height: 48px;
+    font-size: 0.8rem;
+  }
+
+  .java, .cpp, .csharp, .python, .web, .logic {
+    margin-top: -24px;
+    margin-left: -24px;
+  }
+
+  .java {
+    transform: rotate(0deg) translateX(105px) rotate(0deg);
+  }
+  .cpp {
+    transform: rotate(60deg) translateX(105px) rotate(-60deg);
+  }
+  .csharp {
+    transform: rotate(120deg) translateX(105px) rotate(-120deg);
+  }
+  .python {
+    transform: rotate(180deg) translateX(105px) rotate(-180deg);
+  }
+  .web {
+    transform: rotate(240deg) translateX(105px) rotate(-240deg);
+  }
+  .logic {
+    transform: rotate(300deg) translateX(105px) rotate(-300deg);
+  }
+
+  /* Features */
+  .features {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 40px 20px;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
+
+  .feature-card h3 {
+    font-size: 18px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 20px;
+    font-size: 12px;
+  }
+}
+
+/* Small Mobile Styles (max-width: 480px) */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 12px 15px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .navbar nav {
+    width: 80%;
+    max-width: 280px;
+    padding: 70px 25px 25px;
+  }
+
+  .navbar nav a {
+    font-size: 15px;
+    padding: 12px 0;
+  }
+
+  .navbar nav .login-btn {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+
+  .hero {
+    padding: 25px 15px;
+    gap: 25px;
+  }
+
+  .hero h1 {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 13px;
+    padding: 0 5px;
+  }
+
+  .hero-actions {
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    max-width: 100%;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .tech-stack-container {
+    width: 240px;
+    height: 240px;
+  }
+
+  .central-glow {
+    width: 65px;
+    height: 65px;
+    box-shadow: 0 0 30px #7b2ff7;
+  }
+
+  .icon-card {
+    width: 42px;
+    height: 42px;
+    font-size: 0.7rem;
+  }
+
+  .java, .cpp, .csharp, .python, .web, .logic {
+    margin-top: -21px;
+    margin-left: -21px;
+  }
+
+  .java {
+    transform: rotate(0deg) translateX(85px) rotate(0deg);
+  }
+  .cpp {
+    transform: rotate(60deg) translateX(85px) rotate(-60deg);
+  }
+  .csharp {
+    transform: rotate(120deg) translateX(85px) rotate(-120deg);
+  }
+  .python {
+    transform: rotate(180deg) translateX(85px) rotate(-180deg);
+  }
+  .web {
+    transform: rotate(240deg) translateX(85px) rotate(-240deg);
+  }
+  .logic {
+    transform: rotate(300deg) translateX(85px) rotate(-300deg);
+  }
+
+  .features {
+    padding: 30px 15px;
+    gap: 15px;
+  }
+
+  .feature-card {
+    padding: 18px;
+  }
+
+  .feature-card h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+
+  .feature-card p {
+    font-size: 13px;
+  }
+
+  .footer {
+    padding: 15px;
+    font-size: 11px;
+  }
+}
+
+/* Landscape Mobile (max-height: 500px and max-width: 768px) */
+@media (max-width: 768px) and (max-height: 500px) {
+  .hero {
+    padding: 20px;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .hero-left {
+    width: 50% !important;
+    margin-bottom: 0;
+  }
+
+  .hero-right {
+    width: 50% !important;
+  }
+
+  .hero h1 {
+    font-size: 22px;
+  }
+
+  .tech-stack-container {
+    width: 200px;
+    height: 200px;
+  }
+
+  .central-glow {
+    width: 60px;
+    height: 60px;
+  }
+
+  .icon-card {
+    width: 40px;
+    height: 40px;
+    font-size: 0.7rem;
+  }
+
+  .java, .cpp, .csharp, .python, .web, .logic {
+    margin-top: -20px;
+    margin-left: -20px;
+  }
+
+  .java {
+    transform: rotate(0deg) translateX(75px) rotate(0deg);
+  }
+  .cpp {
+    transform: rotate(60deg) translateX(75px) rotate(-60deg);
+  }
+  .csharp {
+    transform: rotate(120deg) translateX(75px) rotate(-120deg);
+  }
+  .python {
+    transform: rotate(180deg) translateX(75px) rotate(-180deg);
+  }
+  .web {
+    transform: rotate(240deg) translateX(75px) rotate(-240deg);
+  }
+  .logic {
+    transform: rotate(300deg) translateX(75px) rotate(-300deg);
+  }
+}
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">⚡ MyCodeTime</div>
+  <div class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <nav id="navMenu">
+    <a href="#">Courses</a>
+    <a href="#">Contests</a>
+    <a href="#">Problems</a>
+    <a href="#">Pricing</a>
+    <button class="login-btn">Login</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-left">
+    <h1>
+      Unlock Your <span>Coding Potential</span><br>
+      Learn & Compete in One Platform
+    </h1>
+    <p>
+      Practice real contest problems, compete with friends,
+      track rankings, and prepare for interviews.
+    </p>
+
+    <div class="hero-actions">
+      <button class="primary-btn">Start Coding</button>
+      <button class="secondary-btn">View Contests</button>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="tech-stack-container">
+  <div class="central-glow"></div>
+  
+  <div class="orbit">
+    <div class="icon-card java" data-label="Java"><span>☕</span></div>
+    <div class="icon-card cpp" data-label="C++"><span>C++</span></div>
+    <div class="icon-card csharp" data-label="C#"><span>C#</span></div>
+    <div class="icon-card python" data-label="Python"><span>🐍</span></div>
+    <div class="icon-card web" data-label="Web"><span>JS</span></div>
+    <div class="icon-card logic" data-label="Logic"><span>{}</span></div>
+  </div>
+</div>
+    <!-- <div class="planet"> -->
+      <!-- <div><img src="/Users/Admin/Documents/FinTech/Gemini_Generated_Image_vjysq4vjysq4vjys.png" style="height: 400px;" /></div> -->
+    <!-- </div> -->
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature-card">
+    <h3>🏆 Coding Contests</h3>
+    <p>Create & join real-time coding contests with leaderboard.</p>
+  </div>
+
+  <div class="feature-card">
+    <h3>🧪 Test Case Engine</h3>
+    <p>Run code securely with multiple hidden test cases.</p>
+  </div>
+
+  <div class="feature-card">
+    <h3>📊 Rankings</h3>
+    <p>Track performance and improve week by week.</p>
+  </div>
+
+  <div class="feature-card">
+    <h3>⚙️ Multi Language</h3>
+    <p>Java, Python, C++, JavaScript supported.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  © 2026 MyCodeTime. Built for Developers.
+</footer>
+
+<script>
+  // Mobile Menu Toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+  const navbar = document.querySelector('.navbar');
+
+  menuToggle.addEventListener('click', function() {
+    navMenu.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+    navbar.classList.toggle('menu-open');
+  });
+
+  // Close menu when clicking on a link
+  const navLinks = navMenu.querySelectorAll('a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      navMenu.classList.remove('active');
+      menuToggle.classList.remove('active');
+      navbar.classList.remove('menu-open');
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function(event) {
+    const isClickInsideNav = navMenu.contains(event.target);
+    const isClickOnToggle = menuToggle.contains(event.target);
+    
+    if (!isClickInsideNav && !isClickOnToggle && navMenu.classList.contains('active')) {
+      navMenu.classList.remove('active');
+      menuToggle.classList.remove('active');
+      navbar.classList.remove('menu-open');
+    }
+  });
+
+  // Close menu on window resize (if resizing to desktop)
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      navMenu.classList.remove('active');
+      menuToggle.classList.remove('active');
+      navbar.classList.remove('menu-open');
+    }
+  });
+</script>
+
+</body>
+</html>
