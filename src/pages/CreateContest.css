@@ -64,6 +64,23 @@
       box-shadow: 0 4px 12px rgba(127, 90, 240, 0.4);
     }
 
+    .my-box::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .my-box::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    .my-box::-webkit-scrollbar-thumb {
+      background: rgba(127, 90, 240, 0.5) !important;
+      border-radius: 4px;
+    }
+
+    .my-box::-webkit-scrollbar-thumb:hover {
+      background: rgba(127, 90, 240, 0.7) !important;
+    }
+
     /* Contest Creation Container */
     .contest-container {
       max-width: 900px;
